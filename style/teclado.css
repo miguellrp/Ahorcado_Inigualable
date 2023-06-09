@@ -1,0 +1,120 @@
+:root {
+    --rosadoMasOscurado: #995b7b;
+    --rosaSombreado: #d29ab5;
+    --rosaPalido: #ffd8eb;
+    --verdeGolf: #51cd51;
+    --naranjaApiñada: #edbe67;
+    --grisAclarado: #707070;
+}
+
+.teclado_fila {
+    width: 475px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tecla_baldosa {
+    width: 40px;
+    height: 43px;
+    margin: 2px;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: var(--rosaPalido); 
+    color: var(--rosadoMasOscurado);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s linear;
+}
+
+.tecla_baldosa:hover {
+    background-color: var(--rosaSombreado);
+}
+
+
+.enter_baldosa {
+    width: 62px;
+    height: 43px;
+    margin: 2px;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: var(--rosaPalido); 
+    color: var(--rosadoMasOscurado);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s linear;
+}
+
+.enter_baldosa:hover {
+    background-color: var(--rosaSombreado);
+}
+
+
+.backspace_baldosa {
+    width: 62px;
+    height: 43px;
+    margin: 2px;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: var(--rosaPalido); 
+    color: var(--rosadoMasOscurado);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s linear;
+}
+
+.backspace_baldosa:hover {
+    background-color: var(--rosaSombreado);
+}
+
+.correcta {
+    background-color: var(--verdeGolf);
+    color: white;
+}
+
+.presente {
+    background-color: var(--naranjaApiñada);
+    color: white;
+}
+
+.incorrecta {
+    background-color: var(--grisAclarado);
+    color: white;
+}
+
+
+@media (min-width: 600px) {
+    .teclado_fila {
+        width: 575px;
+    }
+
+    .tecla_baldosa {
+        width: 50px;
+        height: 53px;
+    }
+
+    .enter_baldosa {
+        width: 77px;
+        height: 53px;
+    }
+
+    .backspace_baldosa {
+        width: 77px;
+        height: 53px;
+    }
+}

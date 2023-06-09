@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tsukimi+Rounded:wght@500&display=swap');
+
+@import url('ahorcado_dibu.css');
+@import url('tablero.css');
+@import url('teclado.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+:root {
+    --rosado: #ffacd7;
+    --rosadoOscurado: #e887b9;
+    --rosadoMasOscurado: #995b7b;
+    --rosadoClareado: #f9cddb;
+}
+
+/* -- Pantallas -- */
+#pantalla_home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--rosado);
+}
+
+#pantalla_resultado {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--rosado);
+  font-family: 'Lilita One', cursive;
+}
+
+
+/* -- Containers -- */
+header {
+    font-family: 'Lilita One', cursive;
+    background-color: var(--rosadoClareado);
+    color: var(--rosadoOscurado);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+}
+
+#container_resultado {
+  height: 550px;
+  width: 650px;
+  background-color: var(--rosadoClareado);
+  color: var(--rosadoOscurado);
+  border-radius: 30px;
+  margin: auto;
+  padding: 3%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgb(153, 91, 123, 0.25) 0px 50px 100px -20px,
+              rgba(153, 91, 123, 0.3) 0px 30px 60px -30px,
+              rgba(153, 91, 123, 0.35) 0px -2px 6px 0px inset;
+}
+
+/* -- Elementos body -- */
+
+/* header */
+p {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--rosadoMasOscurado);
+  transition: ease 0.6s;
+}
+
+a:hover {
+  color: lightcoral;
+}
+
+h1 {
+    font-size: 28px;
+    text-align: center;
+    padding: 1% 0;
+}
+
+#nueva_palabra {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#btn_nueva_palabra {
+  width: 40px;
+  transition: cubic-bezier(0.47, 0, 0.745, 0.715) 0.6s;
+  cursor: pointer;
+}
+
+#btn_nueva_palabra:hover {
+  animation: rotate-scale-down 0.65s linear both;
+}
+
+@keyframes rotate-scale-down { /* Configurado en: https://animista.net */
+  0% {
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    transform: scale(0.5) rotateZ(180deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+
+/* https://codepen.io/_martinCx/pen/LEoEJB autoría: @MartinCx */
+#separador {
+    overflow: hidden;
+    height: 20px;
+}
+  
+#separador:after {
+  content: '';
+  display: block;
+  height: 30px;
+    margin: -30px auto 0;
+  border-radius: 120px / 10px;
+  box-shadow: 0px 0px 18px #995b7b;
+}
+
+
+/* Permitirán transicionar los cambios de pantalla */
+.oculta {
+  display: none;
+  transition: opacity 0.5s ease;
+}
+
+.visible {
+display: block;
+opacity: 1;
+}
+
+
+
+@media (min-width: 600px) {
+  header {
+    padding: 0;
+    justify-content: space-between;
+  }
+
+  h1 {
+    font-size: xx-large;
+    margin: auto;
+  }
+
+  p {
+    margin-left: 1%;
+    display: block;
+    text-align: center;    
+  }
+
+  #btn_nueva_palabra {
+    margin: 0 10px;
+  }
+
+  #container_felicitacion {
+    margin: 20px auto;
+  }
+  
+}
