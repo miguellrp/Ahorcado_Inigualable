@@ -9,6 +9,7 @@
     width: 325px;
     height: 420px;
     margin: auto;
+    padding-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
