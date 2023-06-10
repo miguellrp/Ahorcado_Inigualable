@@ -1,17 +1,19 @@
-import { generarNuevaPartida } from "./main.js";
+import { palabra, generarNuevaPartida } from "./main.js";
 
 export function mostrarPantallaResultado(resultado) {
     const pantallaResultado = document.getElementById("pantalla_resultado");
+    const header = pantallaResultado.querySelector("header");
+    header.style.justifyContent = "center";
     pantallaResultado.className = "visible";
     document.getElementById("pantalla_home").className = "oculta";
 
     if (pantallaResultado.querySelector("#container_resultado"))
         document.getElementById("container_resultado").remove();
 
-    if (resultado.toLowerCase() == "derrota") 
+    if (resultado.toLowerCase() == "victoria") 
         inicializarPantallaVictoria();
 
-    else if (resultado.toLowerCase() == "victoria") 
+    else if (resultado.toLowerCase() == "derrota") 
         inicializarPantallaDerrota();
 }
 
@@ -21,8 +23,8 @@ function inicializarPantallaVictoria() {
 
     let containerFelicitacion = document.createElement("div");
     let titulo = document.createElement("h1");
-    let mensaje = document.createElement("p");
-    let posdata = document.createElement("p");
+    let mensaje = document.createElement("span");
+    let posdata = document.createElement("span");
 
     let containerFlipAhorcado = document.createElement("div");
     let imgAhorcadoFrontal = document.createElement("img");
@@ -50,6 +52,7 @@ function inicializarPantallaVictoria() {
     posdata.innerText = "Si sientes que hoy es tu día, adelante: pincha en la persona salvada de arriba y ve a rescatar a alguien más."
     posdata.style.fontSize = "10px";
     posdata.style.color = "var(--rosadoMasOscurado)";
+    posdata.style.marginTop = "15px";
 
     containerFelicitacion.append(titulo, containerFlipAhorcado, mensaje, posdata);
 
@@ -62,8 +65,9 @@ function inicializarPantallaDerrota() {
 
     let containerPesame = document.createElement("div");
     let titulo = document.createElement("h1");
-    let mensaje = document.createElement("p");
-    let posdata = document.createElement("p");
+    let mensaje = document.createElement("span");
+    let palabraNoAdivinada = document.createElement("span");
+    let posdata = document.createElement("span");
 
     let containerFlipAhorcado = document.createElement("div");
     let imgAhorcadoFrontal = document.createElement("img");
@@ -88,14 +92,24 @@ function inicializarPantallaDerrota() {
     titulo.innerText = "💀   DERROTA   💀";
     titulo.style.color = "var(--rosadoMasOscurado)";
     mensaje.innerText = "Tus capacidades deductivas no son lo suficientemente buenas " +
-                            "todavía como para salvar a una persona de ahorcarse...";
+                            "todavía como para salvar a una persona de ahorcarse... " + 
+                            "Por cierto, la palabra era: ";
+
+    palabraNoAdivinada.innerText = palabra;
+    palabraNoAdivinada.style.backgroundColor = "var(--rosadoOscurado)"
+    palabraNoAdivinada.style.padding = "3%";
+    palabraNoAdivinada.style.borderRadius = "2rem";
+    palabraNoAdivinada.style.margin = "15px auto";
+    palabraNoAdivinada.style.fontSize = "28px";
+    palabraNoAdivinada.style.color = "white";
+
     posdata.innerText = "Si quieres tratar de arreglar lo ocurrido... pincha en la persona ahorcada de arriba " +
                             "e intenta salvar a alguien, anda.";
     posdata.style.color = "var(--rosadoMasOscurado)";
     posdata.style.fontSize = "10px";
 
 
-    containerPesame.append(titulo, containerFlipAhorcado, mensaje, posdata);
+    containerPesame.append(titulo, containerFlipAhorcado, mensaje, palabraNoAdivinada, posdata);
 
     pantallaResultado.appendChild(containerPesame)
 }

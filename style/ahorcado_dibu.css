@@ -2,6 +2,7 @@
     width: 250px;
     height: 250px;
     display: flex;
+    margin: auto;
     justify-content: center;
     transform-style: preserve-3d;
     transition: all 0.6s ease;
