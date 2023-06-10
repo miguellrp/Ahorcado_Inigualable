@@ -187,7 +187,7 @@ function procesoInputTeclaBoton(teclaBoton) {
             }
         }
         else {
-            for (let posicion = 0; posicion < anchuraPalabra; posicion++){
+            for (let posicion = 0; posicion < anchuraPalabra; posicion++) {
                 let baldosaActual = document.getElementById(fila.toString() + "-" + posicion.toString());
 
                 if (baldosaActual.classList.contains("jello-horizontal"))
@@ -252,7 +252,6 @@ function actualizarEstadoJuego() {
         let baldosaActual = document.getElementById(fila.toString() + "-" + posicion.toString());
         let letra = baldosaActual.innerText;
 
-        setTimeout(() => {
             if (!baldosaActual.classList.contains("correcta")){
                 let letraBoton = document.getElementById("Key" + letra);
                 if (palabra.includes(letra) && conteoLetras[letra] > 0){
@@ -268,7 +267,7 @@ function actualizarEstadoJuego() {
                         letraBoton.classList.add("incorrecta");
                 }
             }
-        }, ((posicion + 1) * 200));
+
     }
 }
 
