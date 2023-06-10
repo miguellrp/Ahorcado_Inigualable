@@ -16,7 +16,7 @@ const derrota = cargarSonido("sounds/derrota.mp3");
 const reinicioPartida = cargarSonido("sounds/nueva_partida.mp3"); // autoría: bdunis4
 
 
-export let palabra = "PLAZA" // getPalabraAzar();
+export let palabra = getPalabraAzar();
 
 // Se inicializa a 0,0 el índice de la baldosa actual
 let fila = 0;    // intento actual
@@ -309,7 +309,7 @@ function reiniciarAnimacionBaldosas(baldosa) {
 }
 
 export function generarNuevaPartida() {
-    palabra = "PLAZA" //getPalabraAzar();
+    palabra = getPalabraAzar();
     juegoTerminado = false;
     fila = 0;
     columna = 0;
