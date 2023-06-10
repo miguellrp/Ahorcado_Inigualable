@@ -3,6 +3,9 @@ _Pequeño proyecto con la finalidad de integrar las diferentes funcionalidades q
 
 <img src="./img/captura_demo.png" />
 
+## 🪄 Demo
+https://miguellrp.github.io/Ahorcado_Inigualable/
+
 ## 📋 Requisitos
 * Se escogerá una palabra al azar que se tendrá que adivinar. Se tendrán 6 intentos, y a lo largo de estos se facilitarán dos pistas:
     * 🟠 La palabra contiene esta letra, pero no está en la posición indicada.
