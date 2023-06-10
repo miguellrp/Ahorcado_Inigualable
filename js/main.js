@@ -1,8 +1,9 @@
 import { cargarSonido } from './sounds.js';
 import { mostrarPantallaResultado } from './pantallaResultado.js';
 
-const tempoCargaPantallaResultado = 1800;
+const tiempoCargaPantallaResultado = 1800;
 let juegoTerminado = false;
+let partidaGanada = false;
 let numIntentos = 6;
 let anchuraPalabra = 5;
 
@@ -15,20 +16,19 @@ const derrota = cargarSonido("sounds/derrota.mp3");
 const reinicioPartida = cargarSonido("sounds/nueva_partida.mp3"); // autoría: bdunis4
 
 
-export let palabra = getPalabraAzar();
+export let palabra = "PLAZA" // getPalabraAzar();
 
 // Se inicializa a 0,0 el índice de la baldosa actual
 let fila = 0;    // intento actual
 let columna = 0;    // letra actual de ese intento
 
 window.onload = function() {
+    document.getElementById("btn_nueva_palabra").addEventListener("click", generarNuevaPartida);
+
     inicializarTablero();
     inicializarTecladoPantalla();
     procesoInput();
-
-    document.getElementById("btn_nueva_palabra").addEventListener("click", generarNuevaPartida);
 }
-
 
 /* -- Funciones -- */
 
@@ -93,7 +93,7 @@ function inicializarTecladoPantalla() {
 
 
 function procesoInput() {
-    document.addEventListener("keyup", (tecla) => {  
+    document.addEventListener("keyup", (tecla) => {
         if (juegoTerminado) return;
 
         if (columna < anchuraPalabra) { // mientras no sea la última columna, permite introducir letras [A - Z]
@@ -118,8 +118,19 @@ function procesoInput() {
         else if (tecla.code == "Enter") {
             if (inputPalabraCompleta() == true){
                 actualizarEstadoJuego();
+
                 fila += 1;
                 columna = 0;
+
+                if (fila >= numIntentos && partidaGanada == false) {
+                    derrota.play();
+                    juegoTerminado = true;
+                    setTimeout(() => {
+                        console.log("ola");
+                        mostrarPantallaResultado("derrota");
+                        return;
+                    }, tiempoCargaPantallaResultado);
+                }
             }
             else{
                 for (let posicion = 0; posicion < anchuraPalabra; posicion++){
@@ -161,8 +172,19 @@ function procesoInputTeclaBoton(teclaBoton) {
     else if (teclaBoton.code == "Enter") {
         if (inputPalabraCompleta() == true) {
             actualizarEstadoJuego();
+
             fila += 1;
             columna = 0;
+
+            if (fila >= numIntentos && partidaGanada == false) {
+                derrota.play();
+                juegoTerminado = true;
+                setTimeout(() => {
+                    console.log("ola");
+                    mostrarPantallaResultado("derrota");
+                    return;
+                }, tiempoCargaPantallaResultado);
+            }
         }
         else {
             for (let posicion = 0; posicion < anchuraPalabra; posicion++){
@@ -197,7 +219,7 @@ function actualizarEstadoJuego() {
         let letra = baldosaActual.innerText;
 
         // La revelación de los resultados se revelan con un delay para encajar con la animación flip de cada baldosa del tablero
-        setTimeout(() => {
+        
             if (palabra[posicion] == letra){
                 baldosaActual.classList.add("correcta");
 
@@ -210,28 +232,15 @@ function actualizarEstadoJuego() {
             }
 
             if (letrasCorrectas == anchuraPalabra) {
-                setTimeout(() => {
-                    victoria.play();
-                    juegoTerminado = true;
-                }, delay_animacion_flip);
-
+                victoria.play();
+                juegoTerminado = true;
+                partidaGanada = true;
                 setTimeout(() => {
                     mostrarPantallaResultado("victoria");
-                }, tempoCargaPantallaResultado);
-                
+                    return;
+                }, tiempoCargaPantallaResultado);
             }
-            else if (fila == numIntentos && letrasCorrectas != anchuraPalabra) {
-                console.log("ola");
-                setTimeout(() => {
-                    derrota.play();
-                    juegoTerminado = true;
-                }, delay_animacion_flip);
-
-                setTimeout(() => {
-                    mostrarPantallaResultado("derrota");
-                }, tempoCargaPantallaResultado);
-            }
-        }, ((posicion + 1) * 200));
+        
         if (baldosaActual.classList.contains("jello-horizontal"))
             baldosaActual.classList.remove("jello-horizontal");
         baldosaActual.classList.add("animacion_flip");
@@ -300,7 +309,7 @@ function reiniciarAnimacionBaldosas(baldosa) {
 }
 
 export function generarNuevaPartida() {
-    palabra = getPalabraAzar();
+    palabra = "PLAZA" //getPalabraAzar();
     juegoTerminado = false;
     fila = 0;
     columna = 0;

@@ -1,25 +1,26 @@
 import { palabra, generarNuevaPartida } from "./main.js";
 
+const pantallaResultado = document.getElementById("pantalla_resultado");
+const header = pantallaResultado.querySelector("header");
+
 export function mostrarPantallaResultado(resultado) {
-    const pantallaResultado = document.getElementById("pantalla_resultado");
-    const header = pantallaResultado.querySelector("header");
     header.style.justifyContent = "center";
+    
     pantallaResultado.className = "visible";
     document.getElementById("pantalla_home").className = "oculta";
 
-    if (pantallaResultado.querySelector("#container_resultado"))
-        document.getElementById("container_resultado").remove();
-
-    if (resultado.toLowerCase() == "victoria") 
+    if (resultado.toLowerCase() == "victoria")
         inicializarPantallaVictoria();
 
-    else if (resultado.toLowerCase() == "derrota") 
+    else if (resultado.toLowerCase() == "derrota")
         inicializarPantallaDerrota();
+    
 }
 
 
 function inicializarPantallaVictoria() {
-    const pantallaResultado = document.getElementById("pantalla_resultado");
+    if (pantallaResultado.querySelector("#container_resultado"))
+        document.getElementById("container_resultado").remove();
 
     let containerFelicitacion = document.createElement("div");
     let titulo = document.createElement("h1");
@@ -61,7 +62,8 @@ function inicializarPantallaVictoria() {
 
 
 function inicializarPantallaDerrota() {
-    const pantallaResultado = document.getElementById("pantalla_resultado");
+    if (pantallaResultado.querySelector("#container_resultado"))
+        document.getElementById("container_resultado").remove();
 
     let containerPesame = document.createElement("div");
     let titulo = document.createElement("h1");
@@ -97,7 +99,7 @@ function inicializarPantallaDerrota() {
 
     palabraNoAdivinada.innerText = palabra;
     palabraNoAdivinada.style.backgroundColor = "var(--rosadoOscurado)"
-    palabraNoAdivinada.style.padding = "3%";
+    palabraNoAdivinada.style.padding = "2%";
     palabraNoAdivinada.style.borderRadius = "2rem";
     palabraNoAdivinada.style.margin = "15px auto";
     palabraNoAdivinada.style.fontSize = "28px";
@@ -111,5 +113,5 @@ function inicializarPantallaDerrota() {
 
     containerPesame.append(titulo, containerFlipAhorcado, mensaje, palabraNoAdivinada, posdata);
 
-    pantallaResultado.appendChild(containerPesame)
+    pantallaResultado.appendChild(containerPesame);
 }

@@ -52,21 +52,37 @@ header {
 
 #container_resultado {
   height: auto;
-  width: 95%;
+  width: 90%;
   background-color: var(--rosadoClareado);
   color: var(--rosadoOscurado);
   border-radius: 30px;
   margin: auto;
-  padding: 3%;
   text-align: center;
+  padding: 3%;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  vertical-align: middle;
+  animation: swing-in-top-fwd 1.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
   box-shadow: rgb(153, 91, 123, 0.25) 0px 50px 100px -20px,
               rgba(153, 91, 123, 0.3) 0px 30px 60px -30px,
               rgba(153, 91, 123, 0.35) 0px -2px 6px 0px inset;
 }
+
+  @keyframes swing-in-top-fwd { /* https://animista.net */
+    0% {
+      transform: rotateX(-100deg);
+      transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+      transform: rotateX(0deg);
+      transform-origin: top;
+      opacity: 1;
+    }
+  }
 
 /* -- Elementos body -- */
 
@@ -150,14 +166,14 @@ opacity: 1;
 
 
 @media (min-width: 600px) {
+  #container_resultado {
+    width: 70%;
+    padding: 1.5%;
+  }
+
   header {
     padding: 0;
     justify-content: space-between;
-  }
-
-  #container_resultado {
-    height: 550px;
-    width: 650px;
   }
 
   h1 {

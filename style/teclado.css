@@ -8,7 +8,7 @@
 }
 
 .teclado_fila {
-    width: auto;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -29,6 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1; /* Permite que cada tecla crezca proporcionalmente en función del espacio disponible */
+    flex-basis: calc(100% / 10 - 10px); /* Calcula el ancho deseado para cada tecla, teniendo en cuenta el margen */
     transition: background-color 0.4s linear;
 }
 
@@ -102,6 +104,8 @@
     .tecla_baldosa {
         width: 50px;
         height: 53px;
+        flex-grow: unset;
+        flex-basis: auto;
     }
 
     .enter_baldosa {
