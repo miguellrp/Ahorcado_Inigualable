@@ -126,7 +126,6 @@ function procesoInput() {
                     derrota.play();
                     juegoTerminado = true;
                     setTimeout(() => {
-                        console.log("ola");
                         mostrarPantallaResultado("derrota");
                         return;
                     }, tiempoCargaPantallaResultado);
@@ -180,7 +179,6 @@ function procesoInputTeclaBoton(teclaBoton) {
                 derrota.play();
                 juegoTerminado = true;
                 setTimeout(() => {
-                    console.log("ola");
                     mostrarPantallaResultado("derrota");
                     return;
                 }, tiempoCargaPantallaResultado);
@@ -203,7 +201,7 @@ function procesoInputTeclaBoton(teclaBoton) {
 function actualizarEstadoJuego() {
     let letrasCorrectas = 0;
     let conteoLetras = {};
-    const delay_animacion_flip = 350;
+    const delay_animacion_flip = 450;
 
     for (let i = 0; i < palabra.length; i++){
         let letra = palabra[i];
@@ -252,22 +250,21 @@ function actualizarEstadoJuego() {
         let baldosaActual = document.getElementById(fila.toString() + "-" + posicion.toString());
         let letra = baldosaActual.innerText;
 
-            if (!baldosaActual.classList.contains("correcta")){
-                let letraBoton = document.getElementById("Key" + letra);
-                if (palabra.includes(letra) && conteoLetras[letra] > 0){
-                    baldosaActual.classList.add("presente");
-                    letraBoton.classList.add("presente");
+        if (!baldosaActual.classList.contains("correcta")){
+            let letraBoton = document.getElementById("Key" + letra);
+            if (palabra.includes(letra) && conteoLetras[letra] > 0){
+                baldosaActual.classList.add("presente");
+                letraBoton.classList.add("presente");
 
-                    conteoLetras[letra] -= 1;
-                }
-
-                else{
-                    baldosaActual.classList.add("incorrecta");
-                    if (!letraBoton.classList.contains("correcta"))
-                        letraBoton.classList.add("incorrecta");
-                }
+                conteoLetras[letra] -= 1;
             }
 
+            else{
+                baldosaActual.classList.add("incorrecta");
+                if (!letraBoton.classList.contains("correcta"))
+                    letraBoton.classList.add("incorrecta");
+            }
+        }
     }
 }
 

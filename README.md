@@ -19,11 +19,11 @@ https://miguellrp.github.io/Ahorcado_Inigualable/
 *: Que estea _más segmentado_ no significa que estea _correctamente segmentado_. 
 
 ## 🛠️ Características a arreglar / mejorar
-* ~~La revelación de los colores de las letras no están correctamente implementadas, de forma que, por ejemplo, las letras-input que están en la posición correcta se revelan antes que el resto.~~ 
+* La revelación de los colores de las letras no están correctamente implementadas, de forma que, por ejemplo, las letras-input que están en la posición correcta se revelan antes que el resto.
 * Permitir seleccionar en cada fila de casillas la columna que se desee, de manera que no obligue a escribir la palabra de principio a fin linealmente.
 * Reestructurar el script "main.js" de forma que se pueda segmentar en una organización más comprensible.
 * Pulir el apartado responsive.
-* ¿Mudarse a TypeScript 👀?
+* ¿Mudarse a ~~TypeScript~~ React 👀? De manera que se tenga una estructura de código más declarativa, en lugar de tan imperativa (más costosa en cuanto a mantenimiento).
 
 
 ## 📎Lo utilizado
